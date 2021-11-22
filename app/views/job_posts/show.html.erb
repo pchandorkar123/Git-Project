@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @job_post.description %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @job_post.contact %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @job_post.salary %>
+</p>
+
+<p>
+  <strong>Contractor:</strong>
+  <%= @job_post.contractor_id %>
+</p>
+
+<%= link_to 'Edit', edit_job_post_path(@job_post) %> |
+<%= link_to 'Back', job_posts_path %>
