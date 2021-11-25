@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   
+  resources :applies
   resources :job_posts
   #get 'contractors/index'
   #get 'workers/index'
   root "welcome#index"
+
+  get '/search', to: "job_posts#search"
+
   
    devise_for :users
   

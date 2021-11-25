@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     #before_action :authenticate_user!
-	 #devise_group :user, contains: [:worker, :contractor]
 
 	protect_from_forgery with: :exception 
   

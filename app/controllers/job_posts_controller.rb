@@ -10,7 +10,6 @@ class JobPostsController < ApplicationController
 
   # GET /job_posts/1 or /job_posts/1.json
   def show
-
   end
 
   # GET /job_posts/new
@@ -20,6 +19,19 @@ class JobPostsController < ApplicationController
 
   # GET /job_posts/1/edit
   def edit
+  end
+  
+
+  def search
+     #byebug
+     @job_posts = JobPost.where("title LIKE ?","%"+ params[:title] +"%")
+      
+      if @job_posts.present?
+         render "index"
+      else
+        flash.alert = "Title not found"
+        redirect_to job_posts_path
+      end
   end
 
   # POST /job_posts or /job_posts.json
@@ -68,6 +80,6 @@ class JobPostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_post_params
-      params.require(:job_post).permit(:description, :contact, :salary, :contractor_id)
+      params.require(:job_post).permit(:title,:description, :contact, :salary, :contractor_id)
     end
 end

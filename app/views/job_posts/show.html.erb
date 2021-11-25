@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Title:</strong>
+  <%= @job_post.title %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @job_post.description %>
 </p>
@@ -20,5 +25,12 @@
   <%= @job_post.contractor_id %>
 </p>
 
-<%= link_to 'Edit', edit_job_post_path(@job_post) %> |
+<% if current_user.type == 'Worker' %>
 <%= link_to 'Back', job_posts_path %>
+<% elsif current_user.type == 'Admin'%>
+<%= link_to 'Back', job_posts_path %>
+<%= link_to 'Edit', edit_job_post_path(@job_post) %> 
+<% elsif current_user.type == 'Contractor'%>
+<%= link_to 'Back', job_posts_path %>
+<%= link_to 'Edit', edit_job_post_path(@job_post) %> |
+|<% end %>
