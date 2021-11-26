@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_072738) do
+ActiveRecord::Schema.define(version: 2021_11_26_085816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_072738) do
 
   create_table "applies", force: :cascade do |t|
     t.string "name"
-    t.integer "contact"
+    t.bigint "contact"
     t.string "experience"
     t.integer "expectedSalary"
     t.datetime "created_at", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_072738) do
 
   create_table "job_posts", force: :cascade do |t|
     t.string "description"
-    t.integer "contact"
+    t.bigint "contact"
     t.integer "salary"
     t.integer "contractor_id"
     t.datetime "created_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_072738) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "surname"
-    t.integer "contact"
+    t.bigint "contact"
     t.string "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
