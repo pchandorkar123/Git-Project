@@ -32,6 +32,6 @@
 <%= link_to 'Back', job_posts_path %>
 <%= link_to 'Edit', edit_job_post_path(@job_post) %> 
 <% elsif current_user.type == 'Contractor'%>
-<%= link_to 'Back', job_posts_path %>
+<%= link_to 'Back', show_contractor_job_job_posts_path %>
 <%= link_to 'Edit', edit_job_post_path(@job_post) %> |
 |<% end %>
