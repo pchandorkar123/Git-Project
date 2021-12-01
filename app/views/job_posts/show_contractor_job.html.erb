@@ -16,24 +16,31 @@
 
   <tbody>
     <% @job_posts.each do |job_post| %>
-    <tr>
+     <%if job_post.contractor == current_user %>
+       <tr>
+       
         <td><%= job_post.title %></td>
         <td><%= job_post.description %></td>
         <td><%= job_post.contact %></td>
         <td><%= job_post.salary %></td>
         <td><%= job_post.contractor_id%></td><br>
-        <% if can? :manage, Admin %>
-                <td><%= link_to 'Show', job_post %></td>
-                <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         
-        <% end -%>
-            <% if current_user.type == 'Worker' %>
-                  <td><%= link_to 'Apply for job', new_apply_path %></td>
-                  <td><%= link_to 'Show', job_post %></td>
-            <% end -%>
-          </tr>
-      <%end%>
+        
+
+                 <td><%= link_to 'Show', job_post  %></td>
+                  <td><%= link_to 'Edit', edit_job_post_path(job_post) %></td>
+                  <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                 
+                   
+          
+      </tr>
+       <%end%>
+       <%end%>
+       <br>
+        <%= link_to 'New Job Post', new_job_post_path %>
+                  
 </tbody>
 </table>
+
+<br>
 
 

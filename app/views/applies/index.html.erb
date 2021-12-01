@@ -17,6 +17,7 @@
 
   <tbody>
     <% @applies.each do |apply| %>
+     <% if apply.worker == current_user %>
       <tr>
         <td><%= apply.name %></td>
         <td><%= apply.contact %></td>
@@ -26,6 +27,7 @@
         <td><%= link_to 'Edit', edit_apply_path(apply) %></td>
         <td><%= link_to 'Cancel', apply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>

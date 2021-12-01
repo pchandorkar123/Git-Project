@@ -1,9 +1,8 @@
 class JobPostsController < ApplicationController
-   load_and_authorize_resource
+   # load_and_authorize_resource
 
   before_action :set_job_post, only: %i[ show edit update destroy ]
-
-  # GET /job_posts or /job_posts.json
+# GET /job_posts or /job_posts.json
   def index
     @job_posts = JobPost.all
   end
@@ -34,6 +33,10 @@ class JobPostsController < ApplicationController
       end
   end
 
+  def show_contractor_job
+    @job_posts = JobPost.all
+  end
+
   # POST /job_posts or /job_posts.json
   def create
     @job_post = JobPost.new(job_post_params)
@@ -49,6 +52,8 @@ class JobPostsController < ApplicationController
       end
     end
   end
+
+
 
   # PATCH/PUT /job_posts/1 or /job_posts/1.json
   def update
@@ -72,6 +77,9 @@ class JobPostsController < ApplicationController
     end
   end
 
+
+ 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job_post
@@ -82,4 +90,5 @@ class JobPostsController < ApplicationController
     def job_post_params
       params.require(:job_post).permit(:title,:description, :contact, :salary, :contractor_id)
     end
-end
+  end
+

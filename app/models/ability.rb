@@ -25,6 +25,8 @@ class Ability
           can :create, JobPost
           can :edit, JobPost
           can :update, JobPost
+          can :destroy, JobPost
+          can :show_contractor_job, JobPost
         elsif user.type == 'Worker' 
           can :read, :all
           can :search, JobPost
