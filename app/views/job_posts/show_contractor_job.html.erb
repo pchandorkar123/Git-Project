@@ -9,8 +9,7 @@
       <th>Description</th>
       <th>Contact</th>
       <th>Salary</th>
-      <th>Contractor-ID</th>
-       <th colspan="3"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -22,8 +21,7 @@
         <td><%= job_post.title %></td>
         <td><%= job_post.description %></td>
         <td><%= job_post.contact %></td>
-        <td><%= job_post.salary %></td>
-        <td><%= job_post.contractor_id%></td><br>
+        <td><%= job_post.salary %></td><br>
         
 
                  <td><%= link_to 'Show', job_post  %></td>
@@ -36,7 +34,7 @@
        <%end%>
        <%end%>
        <br>
-       
+
         <%= link_to 'New Job Post', new_job_post_path %>
                   
 </tbody>
