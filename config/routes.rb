@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   end
   #get 'contractors/index'
   #get 'workers/index'
-  root "welcome#index"
+  root to: "welcome#index"
 
 
   get '/search', to: "job_posts#search"
-    devise_for :users
+  devise_for :users
   
    resources :contractors
    resources :workers 
