@@ -31,6 +31,11 @@
             <% end -%>
           </tr>
       <%end%>
+
+      <% if current_user.type == 'Worker' %>
+      <%= link_to 'Back', root_path  %>
+
+      <% end %>
 </tbody>
 </table>
 
