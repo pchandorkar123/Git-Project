@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
 
   get '/search', to: "job_posts#search"
-  devise_for :users
+  devise_for :users 
+
+  resources :users
+
   
    resources :contractors
    resources :workers 
