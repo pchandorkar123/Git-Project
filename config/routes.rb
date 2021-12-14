@@ -7,8 +7,7 @@ Rails.application.routes.draw do
       get :show_contractor_job
     end
   end
-  #get 'contractors/index'
-  #get 'workers/index'
+
   root to: "welcome#index"
 
 

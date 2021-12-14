@@ -17,7 +17,7 @@ class AppliesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create apply" do
     assert_difference('Apply.count') do
-      post applies_url, params: { apply: { contact-no: @apply.contact-no, expected-salary: @apply.expected-salary, experience: @apply.experience, name: @apply.name } }
+      post applies_url, params: { apply: { contact: @apply.contact, expectedSalary: @apply.expectedSalary, experience: @apply.experience, name: @apply.name } }
     end
 
     assert_redirected_to apply_url(Apply.last)
@@ -34,7 +34,7 @@ class AppliesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update apply" do
-    patch apply_url(@apply), params: { apply: { contact-no: @apply.contact-no, expected-salary: @apply.expected-salary, experience: @apply.experience, name: @apply.name } }
+    patch apply_url(@apply), params: { apply: { contact: @apply.contact, expectedSalary: @apply.expectedSalary, experience: @apply.experience, name: @apply.name } }
     assert_redirected_to apply_url(@apply)
   end
 

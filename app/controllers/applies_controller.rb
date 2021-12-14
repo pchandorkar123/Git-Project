@@ -22,10 +22,10 @@ class AppliesController < ApplicationController
   # POST /applies or /applies.json
   def create
     @apply = Apply.new(apply_params)
-     @apply.worker_id = current_user.id
+     #@apply.worker_id = current_user.id
     respond_to do |format|
       if @apply.save
-        format.html { redirect_to @apply, notice: "Apply was successfully created." }
+        format.html { redirect_to @apply, notice: "User Apply  successfully ." }
         format.json { render :show, status: :created, location: @apply }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +64,6 @@ class AppliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def apply_params
-      params.require(:apply).permit(:name, :contact, :experience, :expectedSalary)
+      params.require(:apply).permit(:name, :contact, :experience, :expectedSalary, :worker_id)
     end
 end

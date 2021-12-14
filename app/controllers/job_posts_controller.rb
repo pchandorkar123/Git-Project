@@ -1,5 +1,5 @@
 class JobPostsController < ApplicationController
-    load_and_authorize_resource
+    #load_and_authorize_resource
 
   before_action :set_job_post, only: %i[ show edit update destroy ]
   #before_action :correct_user, only:  [:edit,  :update, :destroy ]
@@ -51,7 +51,7 @@ class JobPostsController < ApplicationController
   def create
     @job_post = JobPost.new(job_post_params)
     #@job_post = current_user.job_posts.build(job_post_params)
-    @job_post.contractor_id = current_user.id
+    #@job_post.contractor_id = current_user.id
 
     respond_to do |format|
       if @job_post.save

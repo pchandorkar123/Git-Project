@@ -22,6 +22,7 @@ class Ability
           can :manage, :all
           
         elsif user.type == 'Contractor'
+          can :index, JobPost
           can :read, JobPost
           can :create, JobPost
           can :edit, JobPost
