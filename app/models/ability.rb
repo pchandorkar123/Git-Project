@@ -20,7 +20,6 @@ class Ability
         #end
         if user.type == 'Admin'
           can :manage, :all
-          
         elsif user.type == 'Contractor'
           can :index, JobPost
           can :read, JobPost

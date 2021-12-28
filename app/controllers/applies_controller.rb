@@ -22,7 +22,7 @@ class AppliesController < ApplicationController
   # POST /applies or /applies.json
   def create
     @apply = Apply.new(apply_params)
-     #@apply.worker_id = current_user.id
+    @apply.worker_id = current_user.id
     respond_to do |format|
       if @apply.save
         format.html { redirect_to @apply, notice: "User Apply  successfully ." }

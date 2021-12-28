@@ -23,20 +23,19 @@
         <% if can? :manage, Admin %>
                 <td><%= link_to 'Show', job_post %></td>
                 <td><%= link_to 'Edit', edit_job_post_path(job_post) %></td>
-                <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         
+                <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
         <% end -%>
-            <% if current_user.type == 'Worker' %>
-                  <td><%= link_to 'Apply for job', new_apply_path %></td>
-                  <td><%= link_to 'Show', job_post %></td>
-            <% end -%>
+        <% if current_user.type == 'Worker' %>
+                <td><%= link_to 'Apply for job', new_apply_path %></td>
+                <td><%= link_to 'Show', job_post %></td>
+        <%elsif job_post.contractor == current_user %>
+                <td><%= link_to 'Show', job_post %></td>
+                <td><%= link_to 'Edit', edit_job_post_path(job_post) %></td>
+                <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <% end -%>
           </tr>
-      <%end%>
-
-      <% if current_user.type == 'Worker' %>
-      <%= link_to 'Back', root_path  %>
-
-      <% end %>
+    <%end%>
+    <%= link_to 'Back', root_path  %>
 </tbody>
 </table>
 

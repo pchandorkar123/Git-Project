@@ -1,16 +1,10 @@
 require 'rails_helper'
 
-
  RSpec.describe JobPostsController, :type => :controller do 
+
     let(:job_post) {FactoryBot.create :job_post}
 
-    describe '#show' do
-      it 'show the user with given id' do
-        get :show, params: { id: job_post.id }
-        expect(assigns(:job_post)).to eql(job_post)
-      end
-    end
-
+    
 
     describe '#index' do
       it 'render a template' do
@@ -24,15 +18,8 @@ require 'rails_helper'
      describe '#new ' do 
       it 'render :new' do
         new_user = FactoryBot.create :job_post
-        get :new, params: {
-          job_post: {
-            id: new_user.id,
-            title: 'dummydata',
-            description: "dummydata",
-            contact: 7894561235,
-            salary: 2000
-          }
-        }
+        get :new, params: {job_post: {id: new_user.id,title: 'dummydata',description: "dummydata",
+            contact: 7894561235,salary: 2000 } }
         expect(response).to render_template(:new)
       end
     end 
@@ -46,12 +33,25 @@ require 'rails_helper'
       end
     end
 
+    describe '#show' do
+      it 'show the user with given id' do
+        get :show, params: { id: job_post.id }
+
+        expect(assigns(:job_post)).to eql(job_post)
+      end
+    end
+
+    describe '#search' do 
+      it 'is use to search job based on title' do 
+        get :search, params: { title: job_post.title }
+        expect(response).to redirect_to job_posts_path
+      end
+    end
+
     describe '#edit ' do 
       it 'render :edit' do
         new_user = FactoryBot.create :job_post
-        get :edit, params: {
-            id: new_user.id
-        }
+        get :edit, params: { id: new_user.id }
         expect(response).to render_template(:edit)
       end
     end 
@@ -59,9 +59,7 @@ require 'rails_helper'
     describe '#destroy ' do 
       it 'render :destroy' do
         new_user = FactoryBot.create :job_post
-        delete :destroy, params: {
-            id: new_user.id
-        }
+        delete :destroy, params: {id: new_user.id}
         expect(response).to redirect_to job_posts_url
       end
     end 

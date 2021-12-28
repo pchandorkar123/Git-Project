@@ -1,57 +1,37 @@
-		  
+<% if current_user.type == 'Admin'%>
+    <h1>Admin panel</h1>
+    <li class="nav-item">
+    <%= link_to "Edit-Profile ", edit_user_registration_path,  class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+    <%= link_to "Show Job", job_posts_path, class:"nav-link" %>
+    </li>
 
-          <% if current_user.type == 'Admin'%>
-
-		  <h1>Admin panel</h1>
-
-
-		    <li class="nav-item">
-            <%= link_to "Edit-Profile ", edit_user_registration_path,  class:"nav-link" %>
-            </li>
-
-
-            <li class="nav-item">
-            <%= link_to "Show Job", job_posts_path, class:"nav-link" %>
-
-            </li>
-
-
-		  <% elsif current_user.type == 'Worker' %>
-            <h1>Welcome to worker account</h1>
-
-            
-            <form class="d-flex" method="GET" action="/search">
-            	<input class="form-control me-2" type="search",placeholder="Search" aria-label ="Search" name = "title">
-            	<button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-
-
-            
-            <li class="nav-item">
-            <%= link_to "Edit-Profile ", edit_user_registration_path,  class:"nav-link" %>
-            </li>
-
-            <li class="nav-item">
-            <%= link_to "Show Job", job_posts_path, class:"nav-link" %>
-            </li>
-           <% else %>
-
-            <h1>Welcome to contractor account</h1>
-
-			<li class="nav-item">
-            <%= link_to "Edit-Profile ", edit_user_registration_path,  class:"nav-link" %>
-            </li>
-
-            <li class="nav-item">
+<% elsif current_user.type == 'Worker' %>
+    <h1>Welcome to worker account</h1>
+    <form class="d-flex" method="GET" action="/search">
+        <input class="form-control me-2" type="search",placeholder="Search" aria-label ="Search" name = "title">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <li class="nav-item">
+    <%= link_to "Edit-Profile ", edit_user_registration_path,  class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+    <%= link_to "Show Job", job_posts_path, class:"nav-link" %>
+    </li>
     
-            <%= link_to "Show Contractor Job",show_contractor_job_job_posts_path, class:"nav-link" %>
-            </li>
-            
-
-			<li class="nav-item">
-	        <%= link_to "Post Job", new_job_post_path, class:"nav-link" %>
-	         </li>
-	        <% end -%>
+<% else %>
+    <h1>Welcome to contractor account</h1>
+    <li class="nav-item">
+    <%= link_to "Edit-Profile ", edit_user_registration_path,  class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+    <%= link_to "Show Contractor Job",show_contractor_job_job_posts_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+	<%= link_to "Post Job", new_job_post_path, class:"nav-link" %>
+	</li>
+<% end -%>
 	      
 
 	         

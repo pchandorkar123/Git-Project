@@ -1,10 +1,5 @@
 class User < ApplicationRecord
-#  before_action :authenticate_user!
-
-#validates :contact, presence:true
-
-
-validates :contact,:presence => true,
+  validates :contact,:presence => true,
                  :numericality => true,
                  :length => { :minimum => 10, :maximum => 15 }
 
@@ -14,21 +9,15 @@ validates :contact,:presence => true,
          :recoverable, :rememberable, :validatable, :confirmable
 
 
+  # def worker?
+  #    type == 'Worker'
+  # end
 
+  # def contractor?
+  #   type == 'Contractor'
+  # end
 
-    def index
-    end
-
-    def worker?
-       type == 'Worker'
-    end
-
-    def contractor?
-      type == 'Contractor'
-    end
-
-    def admin?
-      type == 'Admin'
-    end
-  end
-
+  # def admin?
+  #   type == 'Admin'
+  # end
+end

@@ -1,14 +1,15 @@
-# require 'rails_helper'
+require 'rails_helper'
 
 
-# RSpec.describe User, type: :model do
-# 	describe "after creation" do 
-# 		it "send a confirm link" do 
-# 			user = FactoryBot.build :user 
+RSpec.describe User, type: :model do
+	let(:user) { FactoryBot.create :user }
 
-# 			expect {user.save}.to  change {
-# 				Devise.mailer.deliveries, :count 
-# 			}.by(1)
-# 		end
-# 	end
-# end
+	it 'is invalid without contact' do 
+	user = User.new(contact: nil)
+  	user.valid?
+  	expect(user.errors[:contact]).to_not include("contact must be presence") end
+
+
+  	
+	
+end

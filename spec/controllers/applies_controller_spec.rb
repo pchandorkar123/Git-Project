@@ -2,6 +2,7 @@
 
 
  RSpec.describe AppliesController, type: :controller do 
+  
   let(:apply) { FactoryBot.create :apply}
   
   describe 'before actions' do

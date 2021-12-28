@@ -49,18 +49,13 @@ group :development, :test do
   gem 'faker',                        '~> 1.8', '>= 1.8.7'
   gem 'rails-controller-testing',     '~> 1.0.2'
   gem 'factory_bot_rails',            '~> 4.8', '>= 4.8.2'
-  #gem 'rails-controller-testing',     '~> 1.0.2'
-  #gem 'factory_bot_rails',            '~> 4.8', '>= 4.8.2'
+  #gem 'capybara', '>= 2.15'
+  gem 'shoulda',                      '~> 3.5'
 end
 
 group :test do
-    
-    
-    
-    #gem 'rspec-rails',                  '~> 3.7'
-    gem 'shoulda',                      '~> 3.5'
-    gem 'shoulda-callback-matchers',    '~> 1.1', '>= 1.1.3'
-    gem 'simplecov',                    '~> 0.15.1',              require: false
+    # gem 'shoulda-callback-matchers',    '~> 1.1', '>= 1.1.3'
+     # gem 'simplecov',                    '~> 0.15.1',              require: false
 end
 
 group :development do
@@ -70,8 +65,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-  
 end
 
 group :test do

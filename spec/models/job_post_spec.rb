@@ -13,4 +13,20 @@ RSpec.describe JobPost, type: :model do
   job_post = JobPost.new(contact: nil)
   job_post.valid?
   expect(job_post.errors[:contact]).to_not include("contact must be presence") end
+
+  describe 'Association between jobpost and contractor' do
+    it {should belong_to :contractor}
+  end
+
+  describe "class methods" do 
+      it "count the value" do
+        contractor = Contractor.create!(email:"pooja@gmail.com",password:123456,password_confirmation:123456,contact:8529637415,
+          confirmed_at: Date.today )
+        JobPost  = contractor.job_posts.create!(title: "Contractor",description:"feild to apply",contact:8529637415,salary:2000)
+
+        expect(Contractor.count).to eq(2)
+      end
+
+    end
+
 end

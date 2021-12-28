@@ -1,8 +1,6 @@
 class JobPostsController < ApplicationController
-    #load_and_authorize_resource
-
+  load_and_authorize_resource
   before_action :set_job_post, only: %i[ show edit update destroy ]
-  #before_action :correct_user, only:  [:edit,  :update, :destroy ]
 
 
 # GET /job_posts or /job_posts.json
@@ -24,13 +22,10 @@ class JobPostsController < ApplicationController
   def edit
   end
 
-
-  
-
+  # Get /Search data
   def search
-     #byebug
      @job_posts = JobPost.where("title LIKE ?","%"+ params[:title] +"%")
-      if @job_post.present?
+      if @job_posts.present?
          render "index"
       else
         flash.alert = "Title not found"
@@ -42,16 +37,11 @@ class JobPostsController < ApplicationController
     @job_posts = JobPost.all
   end
 
-  # def correct_user
-  #   @job_post = current_user.job_posts.find_by(id: params[:id])
-  #   redirect_to show_contractor_job_job_posts_path, notice:"Not a authorized user for manipulating this" if @job_post.nil?
-  # end
-
+  
   # POST /job_posts or /job_posts.json
   def create
     @job_post = JobPost.new(job_post_params)
-    #@job_post = current_user.job_posts.build(job_post_params)
-    #@job_post.contractor_id = current_user.id
+    @job_post.contractor_id = current_user.id
 
     respond_to do |format|
       if @job_post.save
